@@ -27,7 +27,17 @@
 .App-link {
   color: #61dafb;
 }
+/* Hide the scrollbar track */
+::-webkit-scrollbar {
+  width: 0; /* For vertical scrollbar, use height: 0; */
+  background-color: transparent;
+}
 
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  width: 0; /* For vertical scrollbar, use height: 0; */
+  background-color: transparent;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

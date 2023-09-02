@@ -10,4 +10,14 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+
 }
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Italianno&family=Krona+One&family=Lancelot&family=Lekton&family=Martel+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Krona+One&family=Lancelot&family=Lekton&family=Martel+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Lancelot&family=Lekton&family=Martel+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Lekton&family=Martel+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lekton&family=Martel+Sans&display=swap');
+@import url(//fonts.googleapis.com/earlyaccess/laomuangdon.css);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
