@@ -20,7 +20,9 @@ export default function Gallery() {
 const galleryArr = [galleryImg1, galleryImg2, galleryImg3, galleryImg4, galleryImg5, galleryImg6, galleryImg7, galleryImg8, galleryImg9, galleryImg10, galleryImg11, galleryImg12]
 
 const galleryImgEls = galleryArr.map( galleryImg =>(
-  <img src={galleryImg} className=" max-w-[330px] max-h-[399px]" alt="" />
+  <div className=" w-[330px] h-[399px] bg-[#808080]">
+    <img src={galleryImg} className=" max-w-[330px] max-h-[399px]" alt="" loading="lazy" />
+  </div>
 
 ))
 
