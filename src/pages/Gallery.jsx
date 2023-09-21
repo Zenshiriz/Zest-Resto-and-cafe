@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import HeroSection from "../components/HeroSection";
 import heroImg from "../assets/galleryHeroImg.png";
 import restoImagesImg from "../assets/restoImagesImg.png";
+import restaurentVideo from "../assets/restaurent.mp4"
 import videoGalleryImg from "../assets/videoGalleryImg.png";
 import restaurentImg1 from "../assets/restaurantImg1.png";
 import restaurentImg2 from "../assets/restaurantImg2.png";
@@ -22,6 +23,7 @@ import galleryImg12 from "../assets/Gallery Images/gelleryImg12.png";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
+
 export default function Gallery() {
   const [translateValue , setTranslateValue] = useState(0)
   const [intervalId , setIntervalId] = useState(null)
@@ -46,10 +48,10 @@ export default function Gallery() {
   ];
 
   const galleryImgEls = galleryArr.map((galleryImg, index) => (
-    <div key={index} className=" w-[330px] h-[399px] bg-[#808080]">
+    <div key={index} className=" w-[320px] h-[380px] ">
       <img
         src={galleryImg}
-        className=" max-w-[330px] max-h-[399px]"
+        className=" max-w-[320px] object-cover max-h-[380px]"
         alt=""
         loading="lazy"
       />
@@ -90,35 +92,47 @@ export default function Gallery() {
         position={"40%"}
       />
       <div>
-        <div className=" md:flex relative bg-[rgba(0,0,0,.8)]">
-          <div className={`${buttonToggleStates.photoBtnState ? "": "hidden"} h-screen w-screen absolute bg-[rgba(0,0,0,.8)] transition duration-300 ease-in-out  `}>
-            <FaChevronLeft id="left" className="left bg-transparent text-white absolute h-14 w-7 top-[45%] left-2 md:left-4 cursor-pointer hover:opacity-50" onClick={togglePhotosFunc} />
-            <FaChevronRight className=" bg-transparent text-white absolute h-14 w-7 right-2 md:right-4 top-[45%] cursor-pointer hover:opacity-50" onClick={togglePhotosFunc} />
-            <AiOutlineClose className=" absolute text-white right-4 w-9 h-9 top-4 cursor-pointer" onClick={()=> 
+        <div className=" md:flex relative ">
+          <div className={`${buttonToggleStates.photoBtnState ? "block": "hidden"} h-screen w-screen absolute bg-[rgba(0,0,0,.8)] transition duration-300 ease-in-out flex items-center justify-center   `}>
+            <FaChevronLeft id="left" className="left bg-transparent text-white absolute text-3xl md:h-14 md:w-7 top-[50%] md:top-[45%] left-2 md:left-4 cursor-pointer hover:opacity-50" onClick={togglePhotosFunc} />
+            <FaChevronRight className=" bg-transparent text-white absolute   text-3xl md:h-14 md:w-7 right-2 md:right-4 top-[50%] md:top-[45%] cursor-pointer hover:opacity-50" onClick={togglePhotosFunc} />
+            <AiOutlineClose className=" absolute text-white right-4 w-9 h-9 top-8 cursor-pointer" onClick={()=> 
               setButtonToggleStates(prevObj => ({  ...prevObj,photoBtnState: false })) }/>    
-            <div className="h-[50vh] md:h-[90vh] md:w-[980px]  bg-white absolute w-[80vw] translate-x-[12%] md:translate-x-[25%] translate-y-[45%] md:translate-y-[5%] overflow-x-hidden">
-              <div style={{transform : `translate(-${translateValue}00%)`}} className={` h-full w-full flex transition duration-300 ease-in-out`}>
+            <div className="h-[50vh] lg:h-[90vh] md:max-w-[980px] lg:w-auto   max-w-[80vw]  w-[450px] overflow-x-hidden">
+            <p className=" absolute text-white  text-lg  bottom-[25%] md:bottom-[10%] left-[45%] md:left-[50%] z-20">{translateValue + 1}/{restaurantElsLength + 1}</p>
+              <div style={{transform : `translate(-${translateValue}00%)`}} className={` h-full w-full flex relative transition duration-300 ease-in-out`}>
                 <img
                   src={restaurentImg1}
-                  className="restaurent-img w-full object-cover md:min-w-[980px] h-full"
+                  loading="lazy"
+                  className="restaurent-img w-full md:object-cover  object-contain lg:min-w-[980px] h-full"
                   alt=""
                 />
                 <img
                   src={restaurentImg2}
-                  className="restaurent-img w-full object-cover h-full md:min-w-[980px]"
+                  loading="lazy"
+                  className="restaurent-img w-full md:object-cover object-contain h-full lg:min-w-[980px]"
                   alt=""
                 />
                 <img
                   src={restaurentImg3}
-                  className="restaurent-img w-full object-cover h-full md:min-w-[980px]"
+                  loading="lazy"
+                  className="restaurent-img w-full md:object-cover object-contain h-full lg:min-w-[980px]"
                   alt=""
                 />
                 <img
                   src={restaurentImg4}
-                  className="restaurent-img w-full object-cover h-full md:min-w-[980px]"
+                  loading="lazy"
+                  className="restaurent-img w-full md:object-cover object-contain h-full lg:min-w-[980px]"
                   alt=""
                 />
               </div>
+            </div>
+          </div>
+          <div className={`${buttonToggleStates.videoBtnState ? "block": "hidden"} h-screen w-screen absolute bg-[rgba(0,0,0,.8)] transition duration-300 ease-in-out  `}>
+            <AiOutlineClose className=" absolute text-white right-4 w-9 h-9 top-8 cursor-pointer" onClick={()=> 
+              setButtonToggleStates(prevObj => ({  ...prevObj, videoBtnState: false })) }/>    
+            <div className=" flex items-center justify-center h-full">
+              <video src={restaurentVideo} className="w-[90vw]  aspect-video object-cover lg:max-h-[80vh]" autoplay={true} controls></video>
             </div>
           </div>
           <div
@@ -145,7 +159,7 @@ export default function Gallery() {
                 <p className=" font-italiana text-white text-2xl md:text-4xl">
                   Video
                 </p>
-                <button className=" uppercase bg-cream text-black min-w-[135px] py-2 w-full px-2 font-loaMuangDon hover:bg-transparent hover:text-cream hover:outline-cream hover:outline hover:outline-[1px] mt-3">
+                <button className=" uppercase bg-cream text-black min-w-[135px] py-2 w-full px-2 font-loaMuangDon hover:bg-transparent hover:text-cream hover:outline-cream hover:outline hover:outline-[1px] mt-3"  onClick={()=> setButtonToggleStates(prevObj => ({ ...prevObj,videoBtnState : true}))}>
                   Explore
                 </button>
               </div>
@@ -156,7 +170,7 @@ export default function Gallery() {
           <h2 className="font-italianno text-center text-[60px] md:text-[90px] lg:text-[120px] text-gold">
             Food & Drinks{" "}
           </h2>
-          <div className="mb-6 grid justify-items-center gap-y-9 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mb-10 grid justify-items-center gap-y-9  grid-flow-row-dense grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {galleryImgEls}
           </div>
         </div>
